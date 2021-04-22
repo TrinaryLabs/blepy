@@ -6,6 +6,7 @@ import bluez
 class Characteristic(dbus.service.Object):
 
     def __init__(self, bus, index, uuid, flags, service):
+        self.path = service.path + '/char' + str(index)
         self.bus = bus
         self.uuid = uuid
         self.service = service
@@ -15,7 +16,7 @@ class Characteristic(dbus.service.Object):
 
     def get_properties(self):
         return {
-            bluez.bluez.GATT_CHRC_IFACE: {
+            bluez.constants.GATT_CHRC_IFACE: {
                 'Service': self.service.get_path(),
                 'UUID': self.uuid,
                 'Flags': self.flags,

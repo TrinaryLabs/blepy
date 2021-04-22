@@ -6,6 +6,7 @@ import bluez
 class Descriptor(dbus.service.Object):
 
     def __init__(self, bus, index, uuid, flags, characteristic):
+        self.path = characteristic.path + '/desc' + str(index)
         self.bus = bus
         self.uuid = uuid
         self.flags = flags

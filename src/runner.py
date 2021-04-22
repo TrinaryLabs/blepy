@@ -54,8 +54,8 @@ class Runner():
         print('Registering GATT application...')
 
         service_manager.RegisterApplication(app.get_path(), {},
-                                            reply_handler=self.register_app_cb,
-                                            error_handler=self.register_app_error_cb)
+                                            reply_handler=self._register_app_cb,
+                                            error_handler=self._register_app_error_cb)
 
         self.main.run()
 
