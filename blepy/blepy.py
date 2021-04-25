@@ -36,13 +36,13 @@ class Descriptor:
     
     def __init__(self, uuid):
         self.uuid = uuid
-        self.values = []
+        self.value = []
         self.flags = []
 
 
 class Peripheral(peripheral.Peripheral):
     
-    def __init__(self, adapter_address, services, local_name=None, appearance=None):
+    def __init__(self, services, adapter_address, local_name=None, appearance=None):
         super().__init__(adapter_address, local_name, appearance)
         self.on_connect = self._on_connect_callback
         self.on_disconnect = self._on_disconnect_callback
@@ -52,7 +52,7 @@ class Peripheral(peripheral.Peripheral):
             for chr_id, chr_item in enumerate(srv_item.characteristics, start = 1):
                 self._add_characteristic(chr_item, chr_id, srv_id)
                 for dsc_id, dsc_item in enumerate(chr_item.descriptors, start = 1):
-                    self._add_descriptor(dsc_item, dsc_id, chr_id, srv_id)
+                    self._add_descriptor(dsc_item, dsc_id, srv_id, chr_id)
             
             
     def _on_connect_callback(self, device):
@@ -85,7 +85,7 @@ class Peripheral(peripheral.Peripheral):
         )
     
     
-    def _add_descriptor(self, descriptor, index, chr_id, srv_id):
+    def _add_descriptor(self, descriptor, index, srv_id, chr_id):
         self.add_descriptor(
             srv_id = srv_id,
             chr_id = chr_id,
