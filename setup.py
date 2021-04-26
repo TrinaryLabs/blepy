@@ -10,7 +10,7 @@ extras_rel = ['bump2version', 'twine']
 extras_dev = extras_rel
 
 # Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
@@ -23,7 +23,7 @@ setup(
 
     description='A class-based wrapper for the peripheral functionalities provided by the library python-bluezero',
     long_description=long_description,
-    long_description_content_type='text/x-rst',
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
     url='https://github.com/TrinaryLabs/blepy',
