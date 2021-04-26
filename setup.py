@@ -6,7 +6,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 required_packages = []
-extras_rel = ['bumpversion', 'twine']
+extras_rel = ['bump2version', 'twine']
 extras_dev = extras_rel
 
 # Get the long description from the README file
