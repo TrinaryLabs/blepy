@@ -1,1 +1,1 @@
-from blepy import *
+from blepy.blepy import *
