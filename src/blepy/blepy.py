@@ -1,3 +1,5 @@
+from queue import Queue
+
 # Bluezero modules
 from bluezero import peripheral
 from bluezero import device
@@ -21,8 +23,9 @@ class Service:
 
 class Characteristic:
     
-    def __init__(self, uuid):
+    def __init__(self, uuid, event_queue=None):
         self.uuid = uuid
+        self.event_queue = event_queue
         self.notifying = False
         self.value = []
         self.flags = []
@@ -30,7 +33,6 @@ class Characteristic:
         self.write_callback = None
         self.notify_callback = None
         self.descriptors = []
-   
  
 class Descriptor:
     

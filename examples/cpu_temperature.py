@@ -78,7 +78,7 @@ class CPUMonitorCharacteristics:
             :return: boolean to indicate if timer should continue
             """
             # read/calculate new value.
-            new_value = read_value()
+            new_value = self.read()
             # Causes characteristic to be updated and send notification
             characteristic.set_value(new_value)
             # Return True to continue notifying. Return a False will stop notifications
